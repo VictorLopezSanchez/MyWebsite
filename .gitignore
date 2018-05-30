@@ -1,0 +1,13 @@
+###> docker ###
+.docker/data/*
+###< docker ###
+
+###> symfony ###
+var/cache
+var/log
+vendor/
+.env
+symfony.lock
+.idea
+###< symfony ###
+
