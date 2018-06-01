@@ -4,7 +4,7 @@ services:
         build: .docker/apache
         container_name: sf4_apache
         ports:
-          - 80:80
+          - 81:80
         volumes:
           - .docker/config/vhosts:/etc/apache2/sites-enabled
           - .:/home/wwwroot/sf4
@@ -32,17 +32,17 @@ services:
         depends_on:
           - maildev
           - mysql
-
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        container_name: sf4_phpmyadmin
-        ports:
-            - 8080:80
-        links:
-            - mysql
+          - mongo
 
     maildev:
         image: djfarrelly/maildev
         container_name: sf4_maildev
         ports:
           - 8001:80
+
+    mongo:
+         image: mongo
+         volumes:
+             - ./docker/runtime/mongo:/var/lib/mongodb
+         restart: always
+         command: mongod --smallfiles --logpath=/dev/null # --quiet
