@@ -5,6 +5,13 @@ RUN apt-get update \
     build-essential locales acl mailutils wget zip unzip \
     gnupg gnupg1 gnupg2
 
+RUN apt-get update
+RUN apt-get install -y autoconf pkg-config libssl-dev
+RUN pecl install mongodb
+RUN docker-php-ext-install bcmath
+RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
+
+
 COPY php.ini /etc/php/7.2.3/php.ini
 COPY php-fpm-pool.conf /etc/php/7.2.3/pool.d/www.conf
 
