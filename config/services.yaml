@@ -26,3 +26,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    admin.affiliate:
+        class: App\Admin\AffiliateAdmin
+        arguments: [~, App\Document\Affiliate, ~]
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_mongodb, label: Afiliados, group: Afiliados }
+        public: true
