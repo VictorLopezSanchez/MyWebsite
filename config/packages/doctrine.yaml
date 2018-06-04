@@ -27,3 +27,13 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
+
+
+# app/config/config.yml
+fos_user:
+    db_driver: mongodb
+    firewall_name: main
+    user_class: App\Document\User
+    from_email:
+        address: "test@gmail.com"
+        sender_name: "test@gmail.com"

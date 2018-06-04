@@ -1,4 +1,14 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>Your lucky number is {{ number }}</h1>
+    {{ items | json_encode() }}
+    <ul>
+        {% for item in items %}
+            <li>
+                <img src="{{ item.largeImage }}"></img>
+                {{ item.title }}
+            </li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
